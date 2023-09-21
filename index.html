@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ingresos y Egresos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="main.js" type="module" defer></script>
+</head>
+<body>
+    <h1 class="text-center mt-4">Gestor de Finanzas Domésticas</h1>
+   <form action="" class="container mt-4">     
+        <div class="form-group">
+            <input type="number" pattern="[0-9]+" required name="valor" class="form-control" placeholder="Ingrese el monto">
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" value="Ingreso" checked="true" name="caja" class="form-check-input">
+            <label class="form-check-label" for="ingreso">Ingreso</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" value="Egreso" name="caja" class="form-check-input">
+            <label class="form-check-label" for="egreso">Egreso</label>
+        </div>
+        <input type="submit" class="btn btn-primary mt-2 mb-2" value="Calcular">
+
+    </form>
+
+    <table class="container table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Valor</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody id="myData">
+
+        </tbody>
+    </table>
+</body>
+</html>
