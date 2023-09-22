@@ -5,37 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Ingresos y Egresos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .form-group, .form-check {
+            margin-bottom: 1rem;
+        }
+
+        .form-check-inline {
+            margin-right: 1rem;
+        }
+
+        .table {
+            margin-top: 2rem;
+        }
+
+        .container-totales {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            margin-bottom: 0.5rem;
+        }
+    </style>
     <script src="main.js" type="module" defer></script>
 </head>
 <body>
-    <h1 class="text-center mt-4">Gestor de Finanzas Domésticas</h1>
-   <form action="" class="container mt-4">     
-        <div class="form-group">
-            <input type="number" pattern="[0-9]+" required name="valor" class="form-control" placeholder="Ingrese el monto">
-        </div>
-        <div class="form-check form-check-inline">
-            <input type="radio" value="Ingreso" checked="true" name="caja" class="form-check-input">
-            <label class="form-check-label" for="ingreso">Ingreso</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input type="radio" value="Egreso" name="caja" class="form-check-input">
-            <label class="form-check-label" for="egreso">Egreso</label>
-        </div>
-        <input type="submit" class="btn btn-primary mt-2 mb-2" value="Calcular">
+    <div class="container">
+        <h1 class="text-center mt-4">Gestor de Finanzas Domésticas</h1>
+        <form action="">     
+            <div class="form-group">
+                <input type="number" pattern="[0-9]+" required name="valor" class="form-control" placeholder="Ingrese el monto">
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" value="Ingreso" checked="true" name="caja" class="form-check-input">
+                <label class="form-check-label" for="ingreso">Ingreso</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" value="Egreso" name="caja" class="form-check-input">
+                <label class="form-check-label" for="egreso">Egreso</label>
+            </div>
+            <input type="submit" class="btn btn-primary mt-2 mb-2" value="Calcular">
+        </form>
 
-    </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Valor</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody id="myData">
+            </tbody>
+        </table>
 
-    <table class="container table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Valor</th>
-                <th>Tipo</th>
-            </tr>
-        </thead>
-        <tbody id="myData">
-
-        </tbody>
-    </table>
+        <div class="container-totales">
+            <h3>Total de Ingresos: <span id="totalIngresos">0</span></h3>
+            <h3>Total de Egresos: <span id="totalEgresos">0</span></h3>
+            <h3>Total Restante: <span id="totalRestante">0</span></h3>
+        </div>
+    </div>
 </body>
 </html>
