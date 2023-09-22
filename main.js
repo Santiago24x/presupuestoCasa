@@ -4,13 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const url = "https://650b8803dfd73d1fab0a0b24.mockapi.io/presupuesto";
     let isEditing = false;
 
-    // Renderiza los datos en la tabla
-    async function showData(){
-        const res = await fetch(url);
-        const data = await res.json();   
-
+    // Esta función muestra los datos en la tabla
+    async function mostrarDatos(){
+        const respuesta = await fetch(url);
+        const datos = await respuesta.json();   
         tabla.innerHTML= "";
-        data.forEach((item) => {
+
+        // Variables para los totales
+        let totalIngresos = 0;
+        let totalEgresos = 0;
+
+        datos.forEach((item) => {
             tabla.innerHTML +=
             `
             <tr>
@@ -21,12 +25,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td><button class="eliminar btn btn-danger" data-id="${item.id}" >Eliminar</button></td>
             </tr>
             `;
+
+            // Calcular totales
+            if (item.caja === 'Ingreso') {
+                totalIngresos += parseFloat(item.valor);
+            } else {
+                totalEgresos += parseFloat(item.valor);
+            }
         });
+
+        // Calcular total restante
+        const totalRestante = totalIngresos - totalEgresos;
+
+        // Actualizar los elementos en el DOM
+        document.getElementById('totalIngresos').textContent = totalIngresos.toFixed(2);
+        document.getElementById('totalEgresos').textContent = totalEgresos.toFixed(2);
+        document.getElementById('totalRestante').textContent = totalRestante.toFixed(2);
     }
 
-    // Maneja el envío del formulario
-    async function handleSubmit(e) {
-        e.preventDefault();
+    // Función para manejar el envío del formulario
+    async function manejarEnvio(e) {
+        e.preventDefault();  // Prevenir el recargado de la página
         const formData = new FormData(formulario);
         const data = {
             valor: formData.get("valor"),
@@ -40,42 +59,43 @@ document.addEventListener("DOMContentLoaded", () => {
             submitButton.value = "Calcular";
             isEditing = false;
         }
+
         if(id){
             // Actualizar registro existente
-            const res = await fetch(`${url}/${id}`,{
+            const respuesta = await fetch(`${url}/${id}`,{
                 method : "PUT",
                 headers:{"Content-type":"application/json"},
                 body: JSON.stringify(data)
             });
-            if(res.ok){
+            if(respuesta.ok){
                 console.log("Registro actualizado");
                 formulario.reset();
-                showData();
+                mostrarDatos();
             }
         } else{
             // Crear nuevo registro
-            const res = await fetch(url,{
+            const respuesta = await fetch(url,{
                 method:"POST",
                 headers:{"Content-type":"application/json"},
                 body :JSON.stringify(data)
             });
-            if(res.ok){
+            if(respuesta.ok){
                 console.log("Registro creado");
                 formulario.reset();
-                showData();
+                mostrarDatos();
             }
         }
     }
 
-    // Maneja los eventos de edición y eliminación
-    function handleTableClick(e) {
-        const target = e.target;
+    // Función para manejar los eventos de edición y eliminación
+    function manejarClickTabla(e) {
+        const objetivo = e.target;
 
-        if (target.classList.contains("editar")) {
-            const id = target.getAttribute("data-id");
+        if (objetivo.classList.contains("editar")) {
+            const id = objetivo.getAttribute("data-id");
 
             fetch(`${url}/${id}`)
-                .then(res => res.json())
+                .then(respuesta => respuesta.json())
                 .then(data => {
                     formulario.valor.value = data.valor;
                     formulario.caja.value = data.caja;
@@ -89,26 +109,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 .catch(error => console.error(error));
         }
 
-        if (target.classList.contains("eliminar")) {
-            const id = target.getAttribute("data-id");
+        if (objetivo.classList.contains("eliminar")) {
+            const id = objetivo.getAttribute("data-id");
 
             fetch(`${url}/${id}`, {
                 method: "DELETE",
             })
-            .then(response => {
-                if (response.ok) {
+            .then(respuesta => {
+                if (respuesta.ok) {
                     console.log("Registro eliminado.");
-                    showData();
+                    mostrarDatos();
                 }
             })
             .catch(error => console.error(error));
         }
     }
 
-    // Asignar eventos a los elementos
-    formulario.addEventListener("submit", handleSubmit);
-    tabla.addEventListener("click", handleTableClick);
+    // Asignar eventos a los elementos del formulario y la tabla
+    formulario.addEventListener("submit", manejarEnvio);
+    tabla.addEventListener("click", manejarClickTabla);
 
-    // Renderizar los datos iniciales
-    showData();
+    // Mostrar los datos iniciales
+    mostrarDatos();
 });
