@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const formulario = document.querySelector("form");
   const tabla = document.querySelector("#myData");
-  const url = "https://650b8803dfd73d1fab0a0b24.mockapi.io/presupuesto";
-  let isEditing = false; //Luego se usara y se sabra su fin
+  const url = "";
+  let isEditing = false; //para saber si se esta editando o no
+
 
   async function mostrarDatos() {
     const respuesta = await fetch(url);
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${item.id}</td>
                 <td>${item.valor}</td>
                 <td>${item.caja}</td>
+                <td>${item.descripcion}
                 <td><button class="editar btn btn-info" data-id="${item.id}" >Editar</button></td>
                 <td><button class="eliminar btn btn-danger" data-id="${item.id}" >Eliminar</button></td>
             </tr>
@@ -56,27 +58,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = {
       valor: formData.get("valor"),
       caja: formData.get("caja"),
+      descripcion: formData.get("descripcion"),
     };
-
+  
     const submitButton = formulario.querySelector("input[type='submit']");
     const id = submitButton.getAttribute("data-id");
-
+  
     if (isEditing) {
-      submitButton.value = "Calcular";
+      submitButton.value = "Ingresar";
       isEditing = false;
     }
-
+  
     if (id) {
       const respuesta = await fetch(`${url}/${id}`, {
         method: "PUT",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(data),
       });
-
+  
       if (respuesta.ok) {
         console.log("Registro actualizado");
-        formulario.reset();
-        mostrarDatos();
+
+  
       }
     } else {
       const respuesta = await fetch(url, {
@@ -84,14 +87,15 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(data),
       });
+  
       if (respuesta.ok) {
         console.log("Registro creado");
-        formulario.reset();
-        mostrarDatos();
-      }
+        
+
+      } 
     }
   }
-
+  
   function manejarClickTabla(e) {
     const objetivo = e.target;
 
@@ -122,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((respuesta) => {
           if (respuesta.ok) {
             console.log("Registro eliminado.");
-            mostrarDatos();
+          
           }
         })
         .catch((error) => console.error(error));
@@ -142,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${data.id}</td>
                         <td>${data.valor}</td>
                         <td>${data.caja}</td>
+                        <td>${data.descripcion}
                         <td><button class="editar btn btn-info" data-id="${data.id}" >Editar</button></td>
                         <td><button class="eliminar btn btn-danger" data-id="${data.id}" >Eliminar</button></td>
                     </tr>
