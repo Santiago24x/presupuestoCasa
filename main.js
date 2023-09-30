@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const formulario = document.querySelector("form");
   const tabla = document.querySelector("#myData");
-  const url = "";
+  const url = "http://127.0.0.1:5010/presupuesto";
   let isEditing = false; //para saber si se esta editando o no
 
 
