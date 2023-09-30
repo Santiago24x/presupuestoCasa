@@ -1,0 +1,28 @@
+{
+  "presupuesto": [
+    {
+      "valor": "10000000",
+      "caja": "Ingreso",
+      "descripcion": "El sueldito de programador",
+      "id": 1
+    },
+    {
+      "valor": "500000",
+      "caja": "Egreso",
+      "descripcion": "Los servicios :(",
+      "id": 2
+    },
+    {
+      "valor": "10000",
+      "caja": "Egreso",
+      "descripcion": "El pan de la semana",
+      "id": 3
+    },
+    {
+      "valor": "40000",
+      "caja": "Egreso",
+      "descripcion": "Las cocacolas de la semana",
+      "id": 4
+    }
+  ]
+}

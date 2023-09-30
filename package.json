@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "name": "presupuestocasa",
+  "description": "Este proyecto consiste en una aplicación web para el registro de ingresos y egresos, permitiendo llevar un control de las finanzas domésticas de manera sencilla y efectiva.",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "json-server --watch DB.json --port 5010 --host 127.0.0.1"
+    
+  },
+  "keywords": [],
+  "author": "Santiago24x",
+  "license": "ISC"
+}
