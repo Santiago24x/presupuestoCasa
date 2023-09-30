@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 
-    <script src="main.js" type="module" defer></script>
 </head>
 <body>
     <div class="container">
@@ -31,6 +30,9 @@
             <div class="form-group">
                 <input type="number" pattern="[0-9]+" required name="valor" class="form-control" placeholder="Ingrese el monto">
             </div>
+            <div class="form-group">
+                <input type="text" required name="descripcion" class="form-control" placeholder="Ingrese una descripción">
+            </div>
             <div class="form-check form-check-inline">
                 <input type="radio" value="Ingreso" checked="true" name="caja" class="form-check-input">
                 <label class="form-check-label" for="ingreso">Ingreso</label>
@@ -39,7 +41,7 @@
                 <input type="radio" value="Egreso" name="caja" class="form-check-input">
                 <label class="form-check-label" for="egreso">Egreso</label>
             </div>
-            <input type="submit" class="btn btn-primary mt-2 mb-2" value="Calcular">
+            <input type="submit" class="btn btn-primary mt-2 mb-2" value="Ingresar">
 
            
 
@@ -53,6 +55,7 @@
                     <th>#</th>
                     <th>Valor</th>
                     <th>Tipo</th>
+                    <th>Descripcion</th>
                 </tr>
             </thead>
             <tbody id="myData">
@@ -65,5 +68,8 @@
             <h3>Total Restante: <span id="totalRestante">0</span></h3>
         </div>
     </div>
+
+    <script src="main.js" type="module" defer></script>
+
 </body>
 </html>
