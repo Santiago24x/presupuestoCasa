@@ -16,7 +16,7 @@ Este proyecto utiliza las siguientes tecnologías:
 - **JavaScript**: Para la funcionalidad dinámica.
 
 ## Requisitos Previos
-- Escoger la rama que deseas main o branch_jsonServer
+- Escoger la rama que deseas [Main](https://github.com/Santiago24x/presupuestoCasa/tree/main) o [branch_jsonServer](https://github.com/Santiago24x/presupuestoCasa/tree/branch_jsonServer)
 
 ### Para la rama branch_jsonServer
 - Antes de comenzar, asegúrate de tener instalado [Node.js](https://nodejs.org) en tu máquina.
