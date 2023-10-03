@@ -1,5 +1,6 @@
 
 
+
 # Registro de Ingresos y Egresos
 
 ![Registro de Ingresos y Egresos](Interfaz.JPG)
@@ -15,15 +16,20 @@ Este proyecto utiliza las siguientes tecnologías:
 - **JavaScript**: Para la funcionalidad dinámica.
 
 ## Requisitos Previos
+- Escoger la rama que deseas main o branch_jsonServer
 
-Antes de comenzar, asegúrate de tener instalado [Node.js](https://nodejs.org) en tu máquina.
+### Para la rama branch_jsonServer
+- Antes de comenzar, asegúrate de tener instalado [Node.js](https://nodejs.org) en tu máquina.
+
+### Para la rama main
+-  En esta rama se utilizara mockapi y este es su endpoint https://650b8803dfd73d1fab0a0b24.mockapi.io/presupuesto" (Para este no es necesaria la instalacion de ninguna dependencia)
 
 ## Instalación
 
 1. **Clona el Repositorio**:
 
     ```bash
-    git clone https://github.com/santiago24x/registro-ingresos-egresos.git
+    git clone https://github.com/Santiago24x/presupuestoCasa.git
     ```
 
 2. **Instala las Dependencias**:
