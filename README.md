@@ -16,7 +16,7 @@ Este proyecto utiliza las siguientes tecnologías:
 - **JavaScript**: Para la funcionalidad dinámica.
 
 ## Requisitos Previos
-- Escoger la rama que deseas [Main](https://github.com/Santiago24x/presupuestoCasa/tree/main) o [branch_jsonServer](https://github.com/Santiago24x/presupuestoCasa/tree/branch_jsonServer)
+- Escoger la rama que deseas [Main](https://github.com/Santiago24x/presupuestoCasa/tree/main) o [branch_jsonServer](https://github.com/Santiago24x/presupuestoCasa/tree/branch_jsonServer) (El software en la rama Json Server tiene mejoras como descripcion para cada ingreso y egreso)
 
 ### Para la rama branch_jsonServer
 - Antes de comenzar, asegúrate de tener instalado [Node.js](https://nodejs.org) en tu máquina.
@@ -25,7 +25,7 @@ Este proyecto utiliza las siguientes tecnologías:
 -  En esta rama se utilizara mockapi y este es su endpoint https://650b8803dfd73d1fab0a0b24.mockapi.io/presupuesto" (Para este no es necesaria la instalacion de ninguna dependencia)
 Nota: Se recomienda la creacion de su propio endpoint en mockapi para la administracion de los datos
 
-## Instalación
+## Instalación del programa con Json Server
 
 1. **Clona el Repositorio**:
 
